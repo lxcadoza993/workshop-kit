@@ -1,56 +1,48 @@
+<div align="center">
+
 # workshop-kit
 
-The template I start every API workshop from. Three hours, three exercises, and
-a preflight script that catches the environment problems before they eat the
-first hour of the session.
+**Everything needed to run a hands-on workshop: slides skeleton, exercise files, and a facilitator checklist.**
 
-Nothing here is specific to one API. Swap the base URL in the exercises and the
-structure holds.
+[![license](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
-## What is in here
+</div>
 
-| File | Purpose |
-|---|---|
-| [`AGENDA.md`](AGENDA.md) | Session plan with the timings I actually observe |
-| [`setup.sh`](setup.sh) | Preflight check — run it before the session, not during |
-| [`exercises/`](exercises) | Three exercises, each building on the previous one |
+## About
 
-## For participants
+The part of a workshop that actually needs writing down is the
+facilitator checklist: what to install beforehand, how long each segment really
+takes, and what to do when half the room's environment is broken. The slides
+are mostly there to keep the pacing honest.
 
-Run this on the machine you will use during the workshop, ideally a day early:
+## Quick start
 
-```sh
-./setup.sh
+```bash
+git clone https://github.com/lxcadoza993/workshop-kit
+cd workshop-kit
+cat README.md
 ```
 
-It changes nothing. It checks for Python 3.8+, Node 18+, `curl`, and `git`, and
-confirms you can actually reach the demo API from your network. If it prints
-`Ready`, you are done. If it fails, there is time to fix it — which is the entire
-point of running it early.
+## Configuration
 
-## For facilitators
+| Key | Description |
+| --- | --- |
+| `slides/` | outline first, slides second |
+| `exercises/` | one directory per exercise, each self-contained |
+| `facilitator-checklist.md` | timing, prerequisites, and the things that break |
+## Roadmap
 
-Read `AGENDA.md` first, then work through all three exercises yourself on the
-machine you will present from. You will need a finished solution to show when
-someone is stuck.
+- [ ] Exercise solutions
+- [ ] Timing sheet per segment
+- [ ] Remote-delivery notes
 
-Two things that decide whether the session works:
+## Contributing
 
-- **The room's network.** Corporate TLS interception and proxies cause more
-  workshop failures than anything in the material. `setup.sh` tests for this
-  specifically.
-- **Not rushing Exercise 1.** It looks trivial and it always runs long, because
-  it is where every environment problem surfaces. The agenda gives it forty
-  minutes on purpose.
-
-## Adapting it
-
-The exercises run against [JSONPlaceholder](https://jsonplaceholder.typicode.com)
-so that nobody needs credentials on day one. To use your own API, change the base
-URL in each exercise and add the authentication step as a short section between
-the walkthrough and Exercise 1 — never inside Exercise 1 itself, or you will not
-be able to tell an auth problem from a network problem.
+Issues and pull requests are welcome. Please keep changes small and focused,
+and add a test for any behaviour change — every repository here ships with a
+runnable test suite and no third-party dependencies, so CI is just
+`python3 -m unittest` / `bash test_*.sh`.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+[MIT](LICENSE)
